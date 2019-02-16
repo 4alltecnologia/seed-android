@@ -1,0 +1,77 @@
+def fileFilter = [
+        '**/R.class',
+        '**/R$*.class',
+        '**/BuildConfig.*',
+        '**/Manifest*.*',
+        '**/*Test*.*',
+        'android/**/*.*',
+
+        // Dagger 2
+        '**/*Dagger*.*',
+        '**/*Dagger*Component*.*',
+        '**/*Module.*',
+        '**/*Module$*.*',
+        '**/*MembersInjector*.*',
+        '**/*_Factory*.*',
+        '**/*Provide*Factory*.*',
+        '**/*$ViewInjector*.*',
+        '**/*$*$*.*',
+
+        // Classes I intentionally don't want to test...
+        '**/*Activity.*',
+        '**/*Binding.*',
+        '**/BR.*',
+        '**/adapters/**/*.*',
+        '**/activities/**/*.*',
+        '**/databinding/**/*.*',
+        '**/dto/**/*.*',
+        '**/enums/**/*.*',
+        '**/factory/**/*.*',
+        '**/fragments/**/*.*',
+        '**/local/**/*.*',
+        '**/model/**/*.*',
+        '**/shared/**/*.*',
+        '**/utils/**/*.*',
+        '**/view/**/*.*',
+        '**/*Activity.*',
+        '**/*DataBinderMapperImpl.*',
+        '**/*_Factory*.*',
+        '**/*Fragment.*'
+]
+
+task jacocoFullTestReport(type: JacocoReport) {
+
+    group = 'Reporting'
+    description = "Generate Jacoco coverage reports for the debug build."
+
+    //Make sure that tests from all modules are run before coverage report
+    dependsOn ":appdata:testDebugUnitTest"
+
+    classDirectories = files([
+            fileTree(
+                    dir: "$project.rootDir/appdata/build/intermediates/classes/debug",
+                    excludes: fileFilter
+            ) + fileTree(
+                    dir: "$project.rootDir/appdata/build/tmp/kotlin-classes/debug",
+                    excludes: fileFilter
+            )
+    ])
+
+    def coverageSourceDirs = [
+            "$project.rootDir/appdata/android.sourceSets.main.java.srcDirs",
+            "$project.rootDir/appdata/src/main/kotlin"
+    ]
+
+    additionalSourceDirs = files(coverageSourceDirs)
+    sourceDirectories = files(coverageSourceDirs)
+
+    executionData = fileTree(dir: project.rootDir, includes: [
+            'appdata/build/jacoco/testDebugUnitTest.exec',
+            // 'appdata/build/outputs/code-coverage/connected/*coverage.ec'
+    ])
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}

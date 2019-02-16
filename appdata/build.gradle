@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'jacoco'
 
+apply from: rootProject.file('quality/jacoco.gradle')
 apply from: rootProject.file('quality/ktlint.gradle')
 
 android {

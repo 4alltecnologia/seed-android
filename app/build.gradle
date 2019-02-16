@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'jacoco'
+
+apply from: rootProject.file('quality/jacoco.gradle')
 apply from: rootProject.file('quality/ktlint.gradle')
 
 android {
