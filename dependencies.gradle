@@ -1,0 +1,43 @@
+ext.buildConfig = [
+        'compileSdk': 28,
+        'minSdk': 21,
+        'targetSdk': 28
+]
+
+ext.versions = [
+        'androidGradlePluginVersion': '3.3.1',
+        'androidSDKVersion': '28.0.0',
+        'constraintLayoutVersion': '1.1.2',
+        'databindingVersion': '3.1.4',
+        'espressoVersion': '3.0.2',
+        'junitVersion': '4.12',
+        'kotlinVersion': '1.3.20',
+        'testRunnerVersion': '1.0.2'
+]
+
+ext.deps = [
+        'android': [
+                'support': [
+                        'appCompat': "com.android.support:appcompat-v7:${versions.androidSDKVersion}",
+                        'cardView': "com.android.support:cardview-v7:${versions.androidSDKVersion}",
+                        'constraintLayout': "com.android.support.constraint:constraint-layout:${versions.constraintLayoutVersion}",
+                        'design': "com.android.support:design:${versions.androidSDKVersion}",
+                        'supportV4': "com.android.support:support-v4:${versions.androidSDKVersion}"
+                ],
+                'test': [
+                        'espresso': "com.android.support.test.espresso:espresso-core:${versions.espressoVersion}",
+                        'runner': "com.android.support.test:runner:${versions.testRunnerVersion}"
+                ]
+        ],
+        'junit': [
+                'core': "junit:junit:${versions.junitVersion}"
+        ],
+        'kotlin': [
+                'stdlib': [
+                        'jdk': "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlinVersion}"
+                ],
+                'test': [
+                        'jdk': "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlinVersion}"
+                ]
+        ]
+]
