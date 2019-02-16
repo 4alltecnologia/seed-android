@@ -1,7 +1,6 @@
 package com.fourall.seedandroid.remote
 
 import com.fourall.seedandroid.model.User
-import com.fourall.seedandroid.remote.UserRemoteDataSource
 import com.fourall.seedandroid.remote.endpoint.UserApiClient
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
