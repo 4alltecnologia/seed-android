@@ -1,0 +1,16 @@
+apply plugin: 'kotlin'
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+
+sourceSets.main.java.srcDirs += 'src/main/kotlin'
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation deps.kotlin.stdlib.jdk
+
+    implementation deps.retrofit.core
+    implementation deps.retrofit.gsonconverter
+}

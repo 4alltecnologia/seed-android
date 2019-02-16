@@ -43,9 +43,14 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':network')
+
     implementation deps.android.support.appCompat
 
     implementation deps.kotlin.stdlib.jdk
+
+    implementation deps.retrofit.core
+    implementation deps.retrofit.gsonconverter
 
     testImplementation deps.junit.core
     testImplementation deps.kotlin.test.jdk
