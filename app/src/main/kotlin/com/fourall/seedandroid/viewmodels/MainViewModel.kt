@@ -16,7 +16,5 @@ class MainViewModel(private val commandProvider: CommandProvider) : ViewModel() 
     }
 
     fun loadUsers() {
-
-        
     }
 }
