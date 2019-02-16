@@ -1,4 +1,4 @@
-package com.fourall.seedandroid.remote.model
+package com.fourall.seedandroid.model
 
 import com.google.gson.annotations.SerializedName
 

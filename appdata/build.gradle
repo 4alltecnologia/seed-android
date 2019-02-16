@@ -59,4 +59,5 @@ dependencies {
 
     testImplementation deps.junit.core
     testImplementation deps.kotlin.test.jdk
+    testImplementation deps.mockitoKotlin.core
 }
