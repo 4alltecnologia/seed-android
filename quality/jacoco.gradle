@@ -45,29 +45,29 @@ task jacocoFullTestReport(type: JacocoReport) {
     description = "Generate Jacoco coverage reports for the debug build."
 
     //Make sure that tests from all modules are run before coverage report
-    dependsOn ":appdata:testDebugUnitTest"
+    dependsOn ":featuredata:testDebugUnitTest"
 
     classDirectories = files([
             fileTree(
-                    dir: "$project.rootDir/appdata/build/intermediates/classes/debug",
+                    dir: "$project.rootDir/featuredata/build/intermediates/classes/debug",
                     excludes: fileFilter
             ) + fileTree(
-                    dir: "$project.rootDir/appdata/build/tmp/kotlin-classes/debug",
+                    dir: "$project.rootDir/featuredata/build/tmp/kotlin-classes/debug",
                     excludes: fileFilter
             )
     ])
 
     def coverageSourceDirs = [
-            "$project.rootDir/appdata/android.sourceSets.main.java.srcDirs",
-            "$project.rootDir/appdata/src/main/kotlin"
+            "$project.rootDir/featuredata/android.sourceSets.main.java.srcDirs",
+            "$project.rootDir/featuredata/src/main/kotlin"
     ]
 
     additionalSourceDirs = files(coverageSourceDirs)
     sourceDirectories = files(coverageSourceDirs)
 
     executionData = fileTree(dir: project.rootDir, includes: [
-            'appdata/build/jacoco/testDebugUnitTest.exec',
-            // 'appdata/build/outputs/code-coverage/connected/*coverage.ec'
+            'featuredata/build/jacoco/testDebugUnitTest.exec',
+            // 'featuredata/build/outputs/code-coverage/connected/*coverage.ec'
     ])
 
     reports {

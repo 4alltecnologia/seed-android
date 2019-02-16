@@ -12,7 +12,6 @@ This repository provides the following components that are common to our project
 
 - CHANGELOG.md
 - README.md
-- Issue & Pull Request Templates
 - Git Ignore
 - Ktlint
 - Lint for Android

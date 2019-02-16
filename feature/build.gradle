@@ -1,5 +1,7 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 apply plugin: 'jacoco'
 
@@ -14,9 +16,6 @@ android {
 
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.targetSdk
-
-        versionCode 1
-        versionName "0.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,7 +37,9 @@ android {
         }
     }
 
+    sourceSets.androidTest.java.srcDirs += 'src/androidTest/kotlin'
     sourceSets.main.java.srcDirs += 'src/main/kotlin'
+    sourceSets.test.java.srcDirs += 'src/test/kotlin'
 
     testOptions {
 
@@ -55,11 +56,19 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':feature')
+    implementation project(':featuredata')
 
     implementation deps.android.support.appCompat
+    implementation deps.android.support.constraintLayout
+    implementation deps.android.support.design
 
     implementation deps.kotlin.stdlib.jdk
 
     ktlint deps.ktlint.core
+
+    testImplementation deps.junit.core
+    testImplementation deps.kotlin.test.jdk
+
+    androidTestImplementation deps.android.test.espresso
+    androidTestImplementation deps.android.test.runner
 }
