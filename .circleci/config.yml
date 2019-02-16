@@ -41,6 +41,15 @@ jobs:
 
     # run tests!
     - run:
+        name: Run code static analysis
+        command: ./gradlew ktlint
+    - run:
+        name: Run Android Lint
+        command: ./gradlew lint
+    - run:
+        name: Build
+        command: ./gradlew assembleDebug
+    - run:
         name: Run unit tests
         command: ./gradlew testDebugUnitTest
     - store_artifacts:
