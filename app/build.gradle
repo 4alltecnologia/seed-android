@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
 
@@ -22,9 +23,28 @@ android {
 
     buildTypes {
 
+        debug {
+
+        }
+
         release {
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets.androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    sourceSets.main.java.srcDirs += 'src/main/kotlin'
+    sourceSets.test.java.srcDirs += 'src/test/kotlin'
+
+    testOptions {
+
+        unitTests.all {
+
+            testLogging {
+                events 'passed', 'skipped', 'failed'
+            }
         }
     }
 }
