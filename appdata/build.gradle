@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 
+apply from: rootProject.file('quality/ktlint.gradle')
+
 android {
 
     compileSdkVersion buildConfig.compileSdk
@@ -51,6 +53,7 @@ dependencies {
 
     implementation deps.coroutines.core
     implementation deps.gson.core
+    ktlint deps.ktlint.core
     implementation deps.retrofit.core
     implementation deps.retrofit.gsonconverter
 

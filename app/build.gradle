@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply from: rootProject.file('quality/ktlint.gradle')
+
 android {
 
     compileSdkVersion buildConfig.compileSdk
@@ -61,6 +63,8 @@ dependencies {
     implementation deps.android.support.design
 
     implementation deps.kotlin.stdlib.jdk
+
+    ktlint deps.ktlint.core
 
     testImplementation deps.junit.core
     testImplementation deps.kotlin.test.jdk
