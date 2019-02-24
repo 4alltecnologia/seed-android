@@ -60,3 +60,8 @@ jobs:
         destination: reports
     - store_test_results:
         path: app/build/test-results
+    - deployment:
+        coverage:
+          branch: [master]
+          commands:
+          - bash <(curl -s https://codecov.io/bash)
