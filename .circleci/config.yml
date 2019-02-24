@@ -60,4 +60,6 @@ jobs:
         destination: reports
     - store_test_results:
         path: app/build/test-results
-    - run: bash <(curl -s https://codecov.io/bash)
+    - run:
+        name: Show code coverage
+        command: bash <(curl -s https://codecov.io/bash)
