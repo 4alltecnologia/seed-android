@@ -66,6 +66,9 @@ dependencies {
 
     ktlint deps.ktlint.core
 
+    implementation deps.coroutines.android
+    implementation deps.coroutines.core
+
     testImplementation deps.junit.core
     testImplementation deps.kotlin.test.jdk
 
