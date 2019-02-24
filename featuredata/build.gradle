@@ -15,6 +15,9 @@ android {
         targetSdkVersion buildConfig.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "REST_API_URL",
+                "\"http://www.mocky.io/v2/\""
     }
 
     buildTypes {
@@ -28,6 +31,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     sourceSets.androidTest.java.srcDirs += 'src/androidTest/kotlin'
@@ -49,7 +57,7 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':network')
+    api project(':network')
 
     implementation deps.android.support.appCompat
 

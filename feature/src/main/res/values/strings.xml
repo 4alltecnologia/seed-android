@@ -1,3 +1,9 @@
 <resources>
+
     <string name="app_name">Feature</string>
+
+    <string name="owner1">\@zecahopf</string>
+    <string name="owner2">\@rgalho</string>
+    <string name="owners">Owners</string>
+
 </resources>

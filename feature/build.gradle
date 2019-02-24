@@ -38,6 +38,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     sourceSets.androidTest.java.srcDirs += 'src/androidTest/kotlin'
     sourceSets.main.java.srcDirs += 'src/main/kotlin'
     sourceSets.test.java.srcDirs += 'src/test/kotlin'
@@ -59,6 +64,8 @@ dependencies {
 
     implementation project(':featuredata')
 
+    implementation deps.android.arch.commonjava8
+    implementation deps.android.arch.extensions
     implementation deps.android.support.appCompat
     implementation deps.android.support.constraintLayout
     implementation deps.android.support.design
@@ -69,6 +76,8 @@ dependencies {
 
     implementation deps.coroutines.android
     implementation deps.coroutines.core
+    implementation deps.retrofit.core
+    implementation deps.retrofit.gsonconverter
 
     testImplementation deps.junit.core
     testImplementation deps.kotlin.test.jdk
