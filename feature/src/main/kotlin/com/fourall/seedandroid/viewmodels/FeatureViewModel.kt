@@ -11,8 +11,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class FeatureViewModel(private val userRepository: UserRepository,
-                       private val commandProvider: CommandProvider) : ViewModel() {
+class FeatureViewModel(
+    private val userRepository: UserRepository,
+    private val commandProvider: CommandProvider
+) : ViewModel() {
 
     val command: SingleLiveEvent<GenericCommand> = commandProvider.getCommand()
     val viewState: MutableLiveData<ViewState> = MutableLiveData()
@@ -47,12 +49,10 @@ class FeatureViewModel(private val userRepository: UserRepository,
                 if (response.isSuccessful) {
 
                     response.body()?.let { users -> command.setValue(Command.ShowUsers(users)) }
-
                 } else {
 
                     command.setValue(Command.ShowErrorMessage)
                 }
-
             } catch (e: Exception) {
 
                 command.setValue(Command.ShowErrorMessage)
